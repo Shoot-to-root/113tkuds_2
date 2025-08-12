@@ -1,8 +1,8 @@
+
 import java.util.Arrays;
 
-public class SelectionSortAndBubbleSort {
+public class SelectionSortImplementation {
 
-    // 實作基本的選擇排序
     public static void selectionSort(int[] arr) {
         if (arr == null || arr.length <= 1) {
             System.out.println("陣列為空或只有一個元素，無需排序。");
@@ -14,7 +14,6 @@ public class SelectionSortAndBubbleSort {
         int swaps = 0;
         long startTime = System.currentTimeMillis();
 
-        // 顯示每一輪的排序過程
         System.out.println("====== 選擇排序過程 ======");
         System.out.println("原始陣列: " + Arrays.toString(arr));
 
@@ -37,7 +36,7 @@ public class SelectionSortAndBubbleSort {
 
             System.out.printf("第 %d 輪排序後: %s\n", i + 1, Arrays.toString(arr));
         }
-        
+
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
 
@@ -47,8 +46,7 @@ public class SelectionSortAndBubbleSort {
         System.out.printf("總交換次數: %d\n", swaps);
         System.out.printf("排序時間: %d 毫秒\n", duration); // 比較與氣泡排序的效能差異
     }
-    
-    // 氣泡排序演算法
+
     public static void bubbleSort(int[] arr) {
         if (arr == null || arr.length <= 1) {
             System.out.println("陣列為空或只有一個元素，無需排序。");
@@ -76,12 +74,12 @@ public class SelectionSortAndBubbleSort {
                 }
             }
             System.out.printf("第 %d 輪排序後: %s\n", i + 1, Arrays.toString(arr));
-            
+
             if (!swappedInPass) {
                 break;
             }
         }
-        
+
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
 
@@ -97,11 +95,11 @@ public class SelectionSortAndBubbleSort {
         int[] dataForBubbleSort = Arrays.copyOf(dataForSelectionSort, dataForSelectionSort.length);
 
         selectionSort(dataForSelectionSort);
-        
+
         System.out.println("\n--------------------------\n");
 
         bubbleSort(dataForBubbleSort);
-        
+
         System.out.println("\n\n====== 總結效能差異 ======");
         System.out.println("選擇排序 (Selection Sort):");
         System.out.println("- 特點: 交換次數較少，在寫入操作成本高時更具優勢。");

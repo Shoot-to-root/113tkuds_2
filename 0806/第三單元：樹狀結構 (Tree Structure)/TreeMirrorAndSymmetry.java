@@ -1,7 +1,8 @@
+
 public class TreeMirrorAndSymmetry {
 
-
     static class Node {
+
         int value;
         Node left;
         Node right;
@@ -10,7 +11,6 @@ public class TreeMirrorAndSymmetry {
             this.value = value;
         }
     }
-
 
     public static void main(String[] args) {
 
@@ -28,10 +28,10 @@ public class TreeMirrorAndSymmetry {
         nonSymmetricTree.right = new Node(2);
         nonSymmetricTree.left.right = new Node(3);
         nonSymmetricTree.right.right = new Node(3);
-        
+
         System.out.println("\n1. 判斷樹是否對稱:");
-        System.out.println("樹 1 是對稱的嗎? " + isSymmetric(symmetricTree));       
-        System.out.println("樹 2 是對稱的嗎? " + isSymmetric(nonSymmetricTree)); 
+        System.out.println("樹 1 是對稱的嗎? " + isSymmetric(symmetricTree));
+        System.out.println("樹 2 是對稱的嗎? " + isSymmetric(nonSymmetricTree));
 
         // 2. 將樹轉換為其鏡像
         System.out.println("\n2. 將樹轉換為其鏡像:");
@@ -40,7 +40,7 @@ public class TreeMirrorAndSymmetry {
         treeToMirror.right = new Node(7);
         treeToMirror.left.left = new Node(1);
         treeToMirror.left.right = new Node(3);
-        
+
         System.out.println("原始樹:");
         printTree(treeToMirror);
         mirror(treeToMirror);
@@ -51,7 +51,7 @@ public class TreeMirrorAndSymmetry {
         Node treeA = new Node(1);
         treeA.left = new Node(2);
         treeA.right = new Node(3);
-        
+
         Node treeB = new Node(1); // treeB 是 treeA 的鏡像
         treeB.left = new Node(3);
         treeB.right = new Node(2);
@@ -60,10 +60,10 @@ public class TreeMirrorAndSymmetry {
         treeC.left = new Node(2);
         treeC.right = new Node(3);
         treeC.right.left = new Node(4);
-        
+
         System.out.println("\n3. 比較兩棵樹是否互為鏡像:");
-        System.out.println("treeA 和 treeB 互為鏡像嗎? " + areMirrors(treeA, treeB)); 
-        System.out.println("treeA 和 treeC 互為鏡像嗎? " + areMirrors(treeA, treeC)); 
+        System.out.println("treeA 和 treeB 互為鏡像嗎? " + areMirrors(treeA, treeB));
+        System.out.println("treeA 和 treeC 互為鏡像嗎? " + areMirrors(treeA, treeC));
 
         // 4. 檢查一棵樹是否為另一棵樹的子樹
         Node mainTree = new Node(3);
@@ -81,11 +81,10 @@ public class TreeMirrorAndSymmetry {
         subTree2.right = new Node(3);
 
         System.out.println("\n4. 檢查是否為子樹:");
-        System.out.println("subTree1 是 mainTree 的子樹嗎? " + isSubtree(mainTree, subTree1)); 
-        System.out.println("subTree2 是 mainTree 的子樹嗎? " + isSubtree(mainTree, subTree2)); 
+        System.out.println("subTree1 是 mainTree 的子樹嗎? " + isSubtree(mainTree, subTree1));
+        System.out.println("subTree2 是 mainTree 的子樹嗎? " + isSubtree(mainTree, subTree2));
     }
 
-    // 1. 判斷一棵二元樹是否為對稱樹
     public static boolean isSymmetric(Node root) {
         if (root == null) {
             return true;
@@ -94,7 +93,6 @@ public class TreeMirrorAndSymmetry {
         return areMirrors(root.left, root.right);
     }
 
-    // 2. 將一棵二元樹轉換為其鏡像樹
     public static Node mirror(Node node) {
         if (node == null) {
             return null;
@@ -107,11 +105,10 @@ public class TreeMirrorAndSymmetry {
         Node temp = node.left;
         node.left = node.right;
         node.right = temp;
-        
+
         return node;
     }
 
-    // 3. 比較兩棵二元樹是否互為鏡像
     public static boolean areMirrors(Node node1, Node node2) {
         // 基礎情況1: 如果兩個節點都是 null，它們是鏡像
         if (node1 == null && node2 == null) {
@@ -125,7 +122,6 @@ public class TreeMirrorAndSymmetry {
         return areMirrors(node1.left, node2.right) && areMirrors(node1.right, node2.left);
     }
 
-    // -4. 檢查一棵樹是否為另一棵樹的子樹
     public static boolean isSubtree(Node mainTree, Node subTree) {
         // 基礎情況1: 子樹為 null，永遠是 true
         if (subTree == null) {
@@ -143,7 +139,6 @@ public class TreeMirrorAndSymmetry {
         return isSubtree(mainTree.left, subTree) || isSubtree(mainTree.right, subTree);
     }
 
-    // 檢查兩棵樹的結構和值是否完全相同
     public static boolean areIdentical(Node node1, Node node2) {
         if (node1 == null && node2 == null) {
             return true;
@@ -153,12 +148,15 @@ public class TreeMirrorAndSymmetry {
         }
         return areIdentical(node1.left, node2.left) && areIdentical(node1.right, node2.right);
     }
-    
+
     public static void printTree(Node node) {
         printTreeRecursive(node, "");
     }
+
     private static void printTreeRecursive(Node node, String indent) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         printTreeRecursive(node.right, indent + "    ");
         System.out.println(indent + node.value);
         printTreeRecursive(node.left, indent + "    ");
