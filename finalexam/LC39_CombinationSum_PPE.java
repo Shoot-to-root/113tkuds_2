@@ -34,8 +34,6 @@ public class LC39_CombinationSum_PPE {
     }
 
     /**
-     * 回溯法求解組合總和
-     *
      * @param candidates 可用的物資價格
      * @param remain 剩餘預算
      * @param start 當前搜尋起點（允許重複 → 傳入 i）
@@ -54,7 +52,7 @@ public class LC39_CombinationSum_PPE {
                 break; // 剪枝：數字過大
 
                         }path.add(val);
-            // 可重複使用當前數字 → i
+            // 可重複使用當前數字 -> i
             backtrack(candidates, remain - val, i, path, results);
             path.remove(path.size() - 1);
         }

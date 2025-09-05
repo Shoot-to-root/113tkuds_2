@@ -34,8 +34,6 @@ public class LC40_CombinationSum2_Procurement {
     }
 
     /**
-     * 回溯法求解組合總和
-     *
      * @param candidates 可用的物資價格
      * @param remain 剩餘預算
      * @param start 當前搜尋起點（只能用一次 → 傳入 i+1）
@@ -57,8 +55,8 @@ public class LC40_CombinationSum2_Procurement {
             int val = candidates[i];
             if (val > remain) {
                 break; // 剪枝
-
-                        }path.add(val);
+            }
+            path.add(val);
             // 每個數字只能用一次 -> i+1
             backtrack(candidates, remain - val, i + 1, path, results);
             path.remove(path.size() - 1);
